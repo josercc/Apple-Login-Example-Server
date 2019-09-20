@@ -1,0 +1,4 @@
+module CNIOOpenSSL {
+    umbrella "/Users/zhangxing/Documents/Gitlab/Github/Apple-Login-Example-Server/.build/checkouts/swift-nio-ssl/Sources/CNIOOpenSSL/include"
+    export *
+}

@@ -1,0 +1,4 @@
+module CCryptoOpenSSL {
+    umbrella "/Users/zhangxing/Documents/Gitlab/Github/Apple-Login-Example-Server/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include"
+    export *
+}
