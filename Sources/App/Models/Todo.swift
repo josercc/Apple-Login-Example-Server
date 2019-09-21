@@ -2,7 +2,7 @@ import FluentSQLite
 import Vapor
 
 /// A single entry of a Todo list.
-final class Todo: SQLiteModel {
+struct Todo: SQLiteModel {
     /// The unique identifier for this `Todo`.
     var id: Int?
 
@@ -10,10 +10,10 @@ final class Todo: SQLiteModel {
     var title: String
 
     /// Creates a new `Todo`.
-    init(id: Int? = nil, title: String) {
-        self.id = id
-        self.title = title
-    }
+//    init(id: Int? = nil, title: String) {
+//        self.id = id
+//        self.title = title
+//    }
 }
 
 /// Allows `Todo` to be used as a dynamic migration.
