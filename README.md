@@ -1,20 +1,99 @@
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/1342803/36623515-7293b4ec-18d3-11e8-85ab-4e2f8fb38fbd.png" width="320" alt="API Template">
-    <br>
-    <br>
-    <a href="http://docs.vapor.codes/3.0/">
-        <img src="http://img.shields.io/badge/read_the-docs-2196f3.svg" alt="Documentation">
-    </a>
-    <a href="https://discord.gg/vapor">
-        <img src="https://img.shields.io/discord/431917998102675485.svg" alt="Team Chat">
-    </a>
-    <a href="LICENSE">
-        <img src="http://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
-    </a>
-    <a href="https://circleci.com/gh/vapor/api-template">
-        <img src="https://circleci.com/gh/vapor/api-template.svg?style=shield" alt="Continuous Integration">
-    </a>
-    <a href="https://swift.org">
-        <img src="http://img.shields.io/badge/swift-4.1-brightgreen.svg" alt="Swift 4.1">
-    </a>
-</p>
+# Apple Login 测试服务器接口
+
+😘当前的测试服务器还在研发中，接口按照最后说明为准
+
+## 注册
+
+> `user/register`
+
+### 请求参数
+
+| 字段名称   | 类型     | 是否必填 | 含义   |
+| ---------- | -------- | -------- | ------ |
+| `userName` | `String` | 是       | 用户名 |
+| `passWord` | `String` | 是       | 密码   |
+
+### 返回参数（其他接口返回一样）
+
+| 字段名称  | 类型     | 是否一定返回 | 含义     |
+| --------- | -------- | ------------ | -------- |
+| `statue`  | `Int`    | 是           | 状态吗   |
+| `message` | `String` | 是           | 返回信息 |
+| `data`    | `User`   | 否           | 用户信息 |
+
+####  User
+
+| 字段名称     | 类型     | 是否一定返回 | 含义               |
+| ------------ | -------- | ------------ | ------------------ |
+| `id`         | `Int`    | 是           | 数据库的唯一 ID    |
+| `userName`   | `String` | 是           | 用户名             |
+| `passWord`   | `String` | 是           | 密码               |
+| `appleID`    | `String` | 否           | 苹果授权的 ID      |
+| `name`       | `String` | 否           | 用户的昵称         |
+| `appleEmail` | `String` | 否           | 苹果授权登录的邮箱 |
+
+## 登录
+
+> `user/login`
+
+### 请求参数
+
+| 字段名称   | 类型     | 是否必填 | 含义   |
+| ---------- | -------- | -------- | ------ |
+| `userName` | `String` | 是       | 用户名 |
+| `passWord` | `String` | 是       | 密码   |
+
+### 返回参数
+
+> 参考注册接口
+
+## 老用户绑定苹果登录
+
+> `user/bindAppleID`
+
+### 请求参数
+
+| 字段名称        | 类型     | 是否必填 | 含义                   |
+| --------------- | -------- | -------- | ---------------------- |
+| `appleId`       | `String` | 是       | 苹果授权的 `ID`        |
+| `name`          | `String` | 是       | 苹果授权的用户名称     |
+| `appleEmail`    | `String` | 是       | 苹果授权的邮箱         |
+| `identityToken` | `String` | 是       | 苹果授权的临时 `Token` |
+| `authCode`      | `String` | 是       | 苹果授权码             |
+| `userID`        | `Int`    | 是       | 用户数据库 `ID`        |
+
+### 返回参数
+
+> 参考注册接口
+
+## 用户解绑苹果登录
+
+> `user/cancelBindAppleID/${userID}`
+
+### 请求参数
+
+| 字段名称 | 类型   | 是否必填 | 含义              |
+| -------- | ------ | -------- | ----------------- |
+| `userID` | ` Int` | 是       | 用户的数据库 `ID` |
+
+### 返回参数
+
+> 参考注册接口
+
+## 苹果授权注册登录
+
+> `user/loginWithAppleID`
+
+### 请求参数
+
+| 字段名称        | 类型     | 是否必填 | 含义                   |
+| --------------- | -------- | -------- | ---------------------- |
+| `appleId`       | `String` | 是       | 苹果授权的 `ID`        |
+| `name`          | `String` | 是       | 苹果授权的用户名称     |
+| `appleEmail`    | `String` | 是       | 苹果授权的邮箱         |
+| `identityToken` | `String` | 是       | 苹果授权的临时 `Token` |
+| `authCode`      | `String` | 是       | 苹果授权码             |
+
+### 返回参数
+
+> 参考注册接口

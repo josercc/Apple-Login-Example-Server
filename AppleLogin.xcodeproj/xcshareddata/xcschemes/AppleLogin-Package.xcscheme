@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppleLogin::Run"
-               BuildableName = "Run"
-               BlueprintName = "Run"
+               BlueprintIdentifier = "AppleLogin::App"
+               BuildableName = "App.framework"
+               BlueprintName = "App"
                ReferencedContainer = "container:AppleLogin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppleLogin::App"
-               BuildableName = "App.framework"
-               BlueprintName = "App"
+               BlueprintIdentifier = "AppleLogin::Run"
+               BuildableName = "Run"
+               BlueprintName = "Run"
                ReferencedContainer = "container:AppleLogin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

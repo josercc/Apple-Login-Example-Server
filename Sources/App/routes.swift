@@ -3,22 +3,14 @@ import Vapor
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
     // Basic "It works" example
-    router.get { req in
-        return "It works!"
+    router.get { req  in
+        return try req.view().render("index.leaf")
     }
     
-    // Basic "Hello, world!" example
-    router.get("hello") { req in
-        return "Hello, Zhang Hang!"
-    }
-
-    // Example of configuring a controller
-    let todoController = TodoController()
-    router.get("todos", use: todoController.index)
-    router.post("todos", use: todoController.create)
-    router.delete("todos", Todo.parameter, use: todoController.delete)
- 
     let userController = UserController()
     router.post("user","register", use: userController.register)
-    
+    router.post("user","login", use: userController.login)
+    router.post("user","bindAppleID", use: userController.bindAppleID)
+    router.post("user","cancelBindAppleID",Int.parameter, use: userController.cancelAppleID)
+    router.post("user","loginWithAppleID", use: userController.loginWithAppleID)
 }
