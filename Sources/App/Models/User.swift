@@ -5,10 +5,10 @@
 //  Created by 张行 on 2019/9/20.
 //
 
-import FluentSQLite
+import FluentPostgreSQL
 import Vapor
 
-struct User: SQLiteModel {
+struct User: PostgreSQLModel {
     var id:Int?
     var userName:String
     var passWord:String
@@ -22,7 +22,7 @@ extension User : Parameter {}
 extension User : Content {}
 
 
-struct UserResponse<M:SQLiteModel> : Content {
+struct UserResponse<M:PostgreSQLModel> : Content {
     var state:Int
     var message:String
     var data:M?

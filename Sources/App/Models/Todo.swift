@@ -1,8 +1,8 @@
-import FluentSQLite
+import FluentPostgreSQL
 import Vapor
 
 /// A single entry of a Todo list.
-struct Todo: SQLiteModel {
+struct Todo: PostgreSQLModel {
     /// The unique identifier for this `Todo`.
     var id: Int?
 
