@@ -19,7 +19,12 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
     services.register(middlewares)
-    let postgresqlConfig = PostgreSQLDatabaseConfig(hostname: "127.0.0.1", port: 5432, username: "postgres", database: "apple_login", password: "1990823", transport: .cleartext)
+    let postgresqlConfig:PostgreSQLDatabaseConfig
+    if let url = Environment.get("DATABASE_URL") {
+        postgresqlConfig = PostgreSQLDatabaseConfig(url: url)!
+    } else {
+        postgresqlConfig = PostgreSQLDatabaseConfig(hostname: "127.0.0.1", port: 5432, username: "postgres", database: "apple_login", password: "1990823", transport: .cleartext)
+    }
     let postgres = PostgreSQLDatabase(config: postgresqlConfig)
 
     // Register the configured SQLite database to the database config.
