@@ -13,4 +13,6 @@ public func routes(_ router: Router) throws {
     router.post("user","bindAppleID", use: userController.bindAppleID)
     router.post("user","cancelBindAppleID",Int.parameter, use: userController.cancelAppleID)
     router.post("user","loginWithAppleID", use: userController.loginWithAppleID)
+    router.post("user","test", use: userController.testLogin)
+    
 }

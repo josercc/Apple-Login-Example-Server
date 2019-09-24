@@ -104,4 +104,19 @@ class UserController {
             }
         }
     }
+    
+    func testLogin(_ req:Request) throws -> Future<UserResponse<User>> {
+        return try req.content.decode(User.self).flatMap(to: UserResponse<User>.self) { user in
+            let client = try req.client()
+            return client.post("https://apple-login-server.herokuapp.com/user/login") { post in
+                try post.content.encode(user)
+            }.flatMap(to: UserResponse<User>.self) { rep in
+                if let response = try? rep.content.decode(UserResponse<User>.self) {
+                    return response
+                }
+                let response = UserResponse<User>(state: 0, message: "登录", data:  user)
+                return req.eventLoop.newSucceededFuture(result: response)
+            }
+        }
+    }
 }
