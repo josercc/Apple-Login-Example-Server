@@ -36,3 +36,20 @@ struct AppleLogin : Content {
     var authCode:String
     var userID:Int?
 }
+
+struct AppleLoginRedirectContent : Content {
+    var code:String
+    var id_token:String?
+    var state:String
+    var user:User?
+    struct User : Content {
+        struct Name : Content {
+            var firstName:String
+            var lastName:String
+        }
+        var name:Name
+        var email:String
+    }
+}
+
+

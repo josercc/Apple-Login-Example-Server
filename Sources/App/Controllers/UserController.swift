@@ -119,4 +119,8 @@ class UserController {
             }
         }
     }
+    
+    func appleLoginRedirect(_ req:Request) throws -> Future<AppleLoginRedirectContent> {
+        return try req.content.decode(AppleLoginRedirectContent.self)
+    }
 }
