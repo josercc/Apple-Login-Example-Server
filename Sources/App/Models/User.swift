@@ -38,9 +38,9 @@ struct AppleLogin : Content {
 }
 
 struct AppleLoginRedirectContent : Content {
-    var code:String
+    var code:String?
     var id_token:String?
-    var state:String
+    var state:String?
     var user:User?
     struct User : Content {
         struct Name : Content {
